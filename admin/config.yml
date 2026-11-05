@@ -1,0 +1,50 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: pt
+media_folder: "imagens/conteudo"
+public_folder: "/imagens/conteudo"
+
+collections:
+  - name: recomendacoes
+    label: "Recomendações"
+    label_singular: "Recomendação"
+    description: "Clique em 'Gerenciar recomendações' para abrir a lista. Lá você pode adicionar, editar ou remover os cards."
+    files:
+      - name: lista
+        label: "Gerenciar recomendações"
+        file: "content/recomendacoes.json"
+        fields:
+          - name: itens
+            label: "Cards de recomendação"
+            label_singular: "Card"
+            widget: list
+            hint: "Clique em 'Add Card' (no topo da lista) para criar uma nova recomendação. Clique em um card existente para editá-lo. Arraste para reordenar."
+            summary: "{{fields.tipo}} — {{fields.titulo}}"
+            fields:
+              - name: tipo
+                label: "Tipo"
+                widget: select
+                options:
+                  - Vídeo
+                  - Texto
+                  - Podcast
+                  - Artigo
+                  - Capítulo
+                  - Livro
+                default: Vídeo
+                hint: "Escolha o tipo de conteúdo. Isso define a etiqueta no card e a busca automática da thumb (para vídeos do YouTube)."
+              - name: titulo
+                label: "Título"
+                widget: string
+                hint: "Nome do vídeo, texto, podcast, artigo ou capítulo."
+              - name: link
+                label: "Link"
+                widget: string
+                hint: "Cole o link completo (YouTube, Spotify, site, DOI, etc.)."
+              - name: imagem
+                label: "Imagem (opcional)"
+                widget: image
+                required: false
+                hint: "Deixe vazio para buscar automaticamente (YouTube) ou usar um bloco neutro."

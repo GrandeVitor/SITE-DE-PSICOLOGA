@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme = saved || "dark";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+
+    <title>Juliana Roloff | Psicóloga Clínica — CRP 07/46432</title>
+    <meta
+      name="description"
+      content="Psicóloga clínica em São Lourenço do Sul (RS). Psicoterapia individual para adultos e adolescentes, presencial e online, em português e inglês. CRP 07/46432."
+    />
+    <meta name="theme-color" content="#0F0E0C" id="theme-color-meta" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Juliana Roloff | Psicóloga Clínica" />
+    <meta
+      property="og:description"
+      content="Psicoterapia individual para adultos e adolescentes, presencial em São Lourenço do Sul (RS) e online para todo o Brasil."
+    />
+    <meta
+      property="og:image"
+      content="https://julianaroloff.psc.br/imagens/og-image.jpg"
+    />
+    <meta property="og:locale" content="pt_BR" />
+
+    <link
+      rel="alternate"
+      hreflang="pt-BR"
+      href="https://julianaroloff.psc.br/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://julianaroloff.psc.br/en/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://julianaroloff.psc.br/"
+    />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='12' fill='%231A1714'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='46' font-style='italic' font-weight='500' fill='%23ECE9E4' text-anchor='middle'%3EJR%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <a href="#inicio" class="skip-link">Pular para o conteúdo</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#inicio" class="brand">
+          <span class="brand-name">Juliana Roloff</span>
+        </a>
+
+        <div class="header-actions">
+          <nav class="main-nav" id="main-nav">
+            <ul>
+              <li><a href="#inicio">Início</a></li>
+              <li><a href="#apresentacao">Quem sou</a></li>
+              <li><a href="#servicos">Atendimentos</a></li>
+              <li><a href="#fundamentos">Como atuo</a></li>
+              <li><a href="#processos">O processo</a></li>
+              <li><a href="#contato">Contato</a></li>
+              <li><a href="#localizacao">Localização</a></li>
+              <li><a href="#conteudo">Recomendações</a></li>
+            </ul>
+          </nav>
+
+          <div class="lang-switcher" role="group" aria-label="Idioma">
+            <a
+              href="/"
+              class="lang-link active"
+              data-lang="pt"
+              aria-current="page"
+            >
+              <span class="lang-flag">🇧🇷</span><span class="lang-text">PT</span>
+            </a>
+            <a href="/en/" class="lang-link" data-lang="en">
+              <span class="lang-flag">🇺🇸</span><span class="lang-text">EN</span>
+            </a>
+          </div>
+
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Ativar tema claro"
+            aria-pressed="true"
+          >
+            <svg
+              class="icon-moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg
+              class="icon-sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </button>
+
+          <button
+            class="menu-toggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="main-nav"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- 1. INÍCIO -->
+      <section id="inicio" class="hero">
+        <div class="container-narrow hero-inner">
+          <p class="eyebrow">
+            Psicologia Clínica · CRP 07/46432 · São Lourenço do Sul, RS
+          </p>
+          <h1>Juliana Roloff</h1>
+          <p class="lead">
+            Ciência do comportamento para entender o que mantém o
+            desconforto e o que sustenta a mudança.
+          </p>
+          <a
+            href="https://wa.me/5553984060277"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+          >
+            Agendar pelo WhatsApp
+          </a>
+          <a
+            href="#apresentacao"
+            class="scroll-cue"
+            aria-label="Rolar para Quem sou"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M12 5v14M6 13l6 6 6-6" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- 2. QUEM SOU -->
+      <section id="apresentacao" class="section">
+        <div class="container">
+          <p class="section-label"><span>01</span> Quem sou</p>
+          <div class="split">
+            <div class="split-text">
+  <h2>Sou psicóloga e filósofa, mulher, brasileira e gaúcha. Formada em Psicologia pela UFCSPA em 2026 e licenciada em Filosofia pela PUCRS em 2020, com especialização em andamento em Análise Comportamental Clínica pelo IBAC.</h2>
+  <p>Minha trajetória acadêmica une duas áreas que se complementam. Na filosofia, dediquei-me à área analítica, com ênfase em lógica, epistemologia e filosofia da ciência. Na psicologia, encontrei na Análise do Comportamento um modo de compreender e intervir sobre o sofrimento humano que não abre mão do pensamento crítico, traduzido em uma prática científica socialmente responsável. A licenciatura em Filosofia não é um desvio da clínica analítico-comportamental: ensinar e clinicar compartilham a mesma premissa, a de criar condições para que novas habilidades e formas de agir se desenvolvam.</p>
+
+  <div class="read-more-content" id="quem-sou-mais">
+    <p>Em vez de partir da separação entre o normal e o patológico, abordo o comportamento de forma funcional: identifico como ele se organiza na relação entre a pessoa, sua história e as condições atuais de vida, e intervenho sobre essas relações para ampliar o bem-estar individual e coletivo.</p>
+    <p>Atuei em diferentes instituições públicas durante minha formação em Psicologia, sempre com supervisão de campo e acompanhamento docente. Por dois anos, estive em ambulatório psiquiátrico do SUS, no Hospital Psiquiátrico São Pedro, orientada pela Clínica Ampliada no escopo da Saúde Coletiva, e intervim em casos de média e alta complexidade, com histórias de vulnerabilidade psicossocial grave, violências diversas e sofrimento psicológico crônico, incluindo situações de uso problemático de substâncias. Participei de um grupo de pesquisa vinculado à UFCSPA, em parceria com o TJ-RS, que desenvolvia e avaliava um protocolo de intervenção com homens acusados de violência contra a mulher. Durante as enchentes de 2024 no Rio Grande do Sul, atuei como voluntária em ponto de resgate, prestando Primeiros Socorros Psicológicos na equipe de apoio do curso de Psicologia da UFCSPA.</p>
+    <p>Tenho também capacitação em Acompanhamento Terapêutico (Instituto Singular) e formação complementar em Terapia Baseada em Processos (Diade Lab). Hoje atendo em consultório e ofereço psicoterapia nas modalidades online e presencial, em português e inglês, com certificação de proficiência (TOEFL iBT).</p>
+  </div>
+
+  <button class="read-more-btn" data-target="quem-sou-mais" aria-expanded="false">
+    <span class="read-more-label">Continuar lendo</span>
+    <svg class="read-more-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </button>
+</div>
+            <figure class="split-media">
+              <img
+                src="/imagens/foto-apresentacao.jpeg"
+                alt="Retrato da psicóloga Juliana Roloff"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. ATENDIMENTOS -->
+      <section id="servicos" class="section section-alt">
+        <div class="container">
+          <p class="section-label"><span>02</span> Atendimentos</p>
+          <p class="section-intro">
+            Psicoterapia individual para pessoas adultas e adolescentes a partir
+            de 13 anos, presencial ou online, em português e inglês.
+          </p>
+
+          <div class="services-facts">
+            <div class="fact">
+              <svg
+                class="fact-icon"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              <span class="fact-label">Público</span>
+              <span class="fact-value"
+                >Pessoas adultas e adolescentes a partir de 13 anos, em
+                português e inglês.</span
+              >
+            </div>
+
+            <div class="fact">
+              <svg
+                class="fact-icon"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+              <span class="fact-label">Modalidade</span>
+              <span class="fact-value">Presencial ou online</span>
+            </div>
+
+            <div class="fact">
+              <svg
+                class="fact-icon"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <span class="fact-label">Sessões</span>
+              <span class="fact-value">50 minutos, semanais</span>
+            </div>
+          </div>
+
+          <div class="services-notes">
+            <p>
+            <p>
+              <h3>Antes de começar</h3>
+              <ul>
+               <li><strong>Adolescentes:</strong> é necessária autorização das pessoas responsáveis. A primeira sessão acontece só com elas, para alinhar o atendimento e os limites do que será compartilhado com a família. O atendimento individual começa depois desse encontro.</li>
+               <li><strong>Atendimento online:</strong> é importante ter um espaço reservado, com privacidade e sem interrupções, onde você possa falar sem que outras pessoas ouçam.</li>
+               <li><strong>Reembolso:</strong> não tenho vínculo com planos de saúde, mas forneço recibo das sessões pagas para que você solicite reembolso à sua operadora. A cobertura de sessões de psicoterapia é um direito previsto na Lei nº 9.656/98.</li>
+              </ul>
+            </p>
+            <p>
+            A duração do processo varia conforme a sua demanda. Como a mudança não é linear, o encerramento é avaliado de forma colaborativa, considerando os objetivos terapêuticos construídos no início.
+            </p>
+            <p>
+              Para começar, entre em contato pelo
+              <a
+                href="https://wa.me/5553984060277"
+                target="_blank"
+                rel="noopener"
+                class="link-inline"
+                >WhatsApp</a
+              >
+              ou preencha o
+              <a href="#contato" class="link-inline">formulário</a>.
+            </p>
+            </p>
+          </div>
+        </div>
+      </section>
+
+            <!-- 4. COMO ATUO -->
+      <section id="fundamentos" class="section">
+        <div class="container-narrow">
+          <p class="section-label"><span>03</span> Como atuo</p>
+
+          <p>Quem procura terapia geralmente já tentou resolver seu problema sozinha: mudou hábitos, pesquisou, prometeu que seria diferente. Funciona por um tempo, mas o desconforto retorna e a pergunta persiste: <em>por que faço isso, mesmo sabendo que me faz mal?</em></p>
+          <p>As respostas mais comuns apontam para dentro, como falta de força de vontade, desequilíbrio químico ou um tipo de personalidade. A Análise do Comportamento, abordagem que orienta meu trabalho, oferece outra perspectiva: <strong>o que você faz é moldado pela relação entre você e o ambiente</strong>. Você repete certos comportamentos porque, em determinadas situações, eles produziram efeitos, e evita outros porque as consequências pesaram.</p>
+
+          <div class="read-more-content" id="como-atuo-mais">
+            <p>O "jeito de ser" é, em boa parte, um conjunto de aprendizagens que se repetiram o suficiente para parecer natural. Isso não desconsidera suas emoções, e sim deixa de tratá-las como causas. Se você diz que gritou porque estava com raiva, a raiva não explica o grito. Sentir e gritar acontecem juntos; é essa proximidade que faz parecer que um causou o outro, quando ambos respondem às mesmas condições.</p>
+            <p><strong>Mesmo o que parece irracional serve a algo, e descobrir essa função abre caminho para a mudança</strong>. Você conhece a sua história; eu entro com a formação para identificar padrões que passam despercebidos a quem está envolvida demais no que vive. Os objetivos são construídos com você e reavaliados conforme o processo avança.</p>
+            <p>Nada disso significa tratar o sofrimento de forma leviana. Independentemente da origem (inata, aprendida ou uma combinação de ambas), <strong>o sofrimento é real, dói e merece cuidado sério</strong>. Parte dele pode exigir acompanhamento multiprofissional. Distinguir qual cuidado é necessário faz parte do trabalho.</p>
+            <p>Não posso prometer que você vai sair bem de todo atendimento, porque falar do que dói pode gerar desconforto. É verdade que o que você compartilha muda o rumo do processo. É igualmente verdade que <strong>não será transformado em veredito sobre você ou em conselho moralizante</strong>. Não é gentileza, é condição técnica: ninguém continua falando do que dói se a reação de quem escuta piora a dor.</p>
+            <p>Minhas reações não são neutras, como as de qualquer pessoa. Parte do meu trabalho é examiná-las em supervisão e ajustar o que elas produzem em você.</p>
+            <p>O propósito final é que você aprenda a analisar e gerenciar os fatores que mantêm seu desconforto, para lidar de forma autônoma com eles nos diferentes contextos da sua vida, orientada para a sua saúde e para a saúde do ambiente em que vive. Os dois são inseparáveis.</p>
+          </div>
+
+          <button class="read-more-btn" data-target="como-atuo-mais" aria-expanded="false">
+            <span class="read-more-label">Continuar lendo</span>
+            <svg class="read-more-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- 5. O PROCESSO -->
+      <section id="processos" class="section section-alt">
+        <div class="container">
+  <p class="section-label"><span>04</span> O processo</p>
+  <h2>O que esperar ao me contatar</h2>
+
+  <ol class="process-list">
+    <li>
+      <div class="process-num">01</div>
+      <div class="process-body">
+        <h3>Contato inicial e agendamento</h3>
+        <p class="muted">Alinhamento de horários, valores e formato (presencial ou online). Em seguida, marcamos a primeira sessão.</p>
+      </div>
+    </li>
+    <li>
+      <div class="process-num">02</div>
+      <div class="process-body">
+        <h3>Primeira sessão e início do trabalho</h3>
+        <p class="muted">Nesses primeiros encontros, vamos nos concentrar na sua história de vida e mapear seus objetivos, recursos e dificuldades. Aqui também combinamos como funciona: o que esperar de mim, o que espero de você e como lidamos com os imprevistos.</p>
+      </div>
+    </li>
+    <li>
+      <div class="process-num">03</div>
+      <div class="process-body">
+                <h3>O que mantém o desconforto</h3>
+        <p class="muted">Investigamos as condições em que o seu desconforto aparece: o que acontece antes, o que você faz, sente e precisa, e o que tudo isso produz na sua vida. O objetivo é entender as relações que o sustentam hoje, sem procurar uma causa única ou escondida dentro de você.</p>
+      </div>
+    </li>
+    <li>
+      <div class="process-num">04</div>
+      <div class="process-body">
+        <h3>Estratégias em prática</h3>
+        <p class="muted">Com os objetivos definidos, desenhamos as estratégias e as colocamos em ação. O trabalho não fica restrito ao consultório; ele se estende ao que você testa e aplica no seu dia a dia.</p>
+      </div>
+    </li>
+    <li>
+      <div class="process-num">05</div>
+      <div class="process-body">
+                <h3>Avaliação e ajuste</h3>
+        <p class="muted">A psicoterapia é um processo vivo, não uma receita de bolo. Revisamos constantemente se o que fazemos está funcionando. Se estiver, consolidamos as mudanças até que você siga sem a terapia. Se não, ajustamos a rota.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="process-addendum">
+    <h3>Sobre a nossa relação</h3>
+    <p class="muted">A confiança não é um pré-requisito para começar; ela se constrói no processo. E se em algum momento algo que eu fizer ou disser te causar desconforto, você pode e deve trazer isso para a sessão. Não é um problema, é parte do trabalho.</p>
+  </div>
+</div>
+      </section>
+
+      <!-- 6. CONTATO -->
+      <section id="contato" class="section">
+        <div class="container">
+          <p class="section-label"><span>05</span> Contato</p>
+          <div class="split split-contact">
+            <div class="split-text">
+              <h2>Vamos conversar</h2>
+              <p class="muted">
+                Preencha o formulário para tirar dúvidas ou agendar uma sessão.
+                Se preferir, fale diretamente pelo WhatsApp.
+              </p>
+              <p class="contact-direct">
+                <a
+                  href="https://wa.me/5553984060277"
+                  target="_blank"
+                  rel="noopener"
+                  class="link-inline"
+                >
+                  → WhatsApp
+                </a>
+              </p>
+            </div>
+
+            <form
+              class="contact-form"
+              name="contato"
+              method="POST"
+              action="https://api.web3forms.com/submit"
+            >
+              <!-- Access Key do Web3Forms — substituir pelo valor real -->
+              <input
+                type="hidden"
+                name="access_key"
+                value="520ca187-adfc-4fc1-8c4c-aacd7ccb87d0"
+              />
+              <input
+                type="hidden"
+                name="subject"
+                value="Novo contato - Psicóloga Juliana Roloff"
+              />
+              <input
+                type="hidden"
+                name="from_name"
+                value="Site Juliana Roloff"
+              />
+              <input
+                type="hidden"
+                name="redirect"
+                value="https://julianaroloff.psc.br/obrigado.html"
+              />
+              <!-- Honeypot anti-spam (invisível para humanos) -->
+              <input
+                type="checkbox"
+                name="botcheck"
+                style="display: none"
+              />
+
+              <div class="field">
+                <label for="nome">Nome completo *</label>
+                <input
+                  type="text"
+                  id="nome"
+                  name="nome"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+              <div class="field">
+                <label for="telefone">Telefone com DDD *</label>
+                <input
+                  type="tel"
+                  id="telefone"
+                  name="telefone"
+                  required
+                  autocomplete="tel"
+                  inputmode="tel"
+                  placeholder="(53) 98406-0277"
+                />
+              </div>
+              <div class="field">
+                <label for="email">E-mail *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              <div class="field">
+                <label for="mensagem"
+                  >Mensagem <span class="optional">(opcional)</span></label
+                >
+                <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+              </div>
+
+              <div class="field field-check">
+                <input
+                  type="checkbox"
+                  id="consentimento"
+                  name="consentimento"
+                  required
+                />
+                <label for="consentimento"
+                  >Autorizo o contato e o uso dos meus dados exclusivamente para
+                  responder a esta mensagem, conforme a LGPD.</label
+                >
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full">
+                Enviar mensagem
+              </button>
+              <p class="form-note">
+                Este formulário não é canal de emergência. Em caso de crise,
+                ligue <strong>188</strong> (CVV).
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. LOCALIZAÇÃO -->
+      <section id="localizacao" class="section section-alt">
+        <div class="container">
+          <p class="section-label"><span>06</span> Localização</p>
+          <div class="split split-location">
+            <div class="split-text">
+              <h2>Onde atendo</h2>
+              <p class="muted">
+                Atendimento presencial em
+                <strong>São Lourenço do Sul (RS)</strong>. Também ofereço
+                atendimento <em>online</em> para todo o Brasil, seguindo as
+                diretrizes do Conselho Federal de Psicologia.
+              </p>
+              <p class="muted">
+                O endereço completo do consultório é enviado após o agendamento.
+              </p>
+            </div>
+            <div class="map-wrapper">
+              <iframe
+                src="https://www.google.com/maps?q=S%C3%A3o+Louren%C3%A7o+do+Sul,+RS&output=embed"
+                title="Mapa de São Lourenço do Sul, RS"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. RECOMENDAÇÕES -->
+      <section id="conteudo" class="section">
+        <div class="container">
+          <p class="section-label"><span>07</span> Recomendações</p>
+          <h2>Leituras, vídeos e artigos</h2>
+          <p class="muted section-intro">
+            Materiais que ajudam a entender o processo terapêutico e a ciência
+            do comportamento. Não é uma lista de dicas genéricas; é material
+            para quem quer pensar o comportamento com mais rigor.
+          </p>
+        </div>
+
+        <div
+          class="carousel"
+          id="carousel"
+          aria-roledescription="carrossel"
+          aria-label="Recomendações de conteúdo"
+        >
+          <button
+            class="carousel-arrow carousel-arrow--prev"
+            aria-label="Anterior"
+            type="button"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+
+          <div class="carousel-viewport" id="carousel-viewport">
+            <div class="carousel-track" id="carousel-track"></div>
+          </div>
+
+          <button
+            class="carousel-arrow carousel-arrow--next"
+            aria-label="Próximo"
+            type="button"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="footer-name">Juliana Roloff</p>
+        <p class="footer-role">Psicóloga Clínica · CRP 07/46432</p>
+        <p class="footer-contact">
+          <a href="mailto:contato@julianaroloff.psc.br"
+            >contato@julianaroloff.psc.br</a
+          >
+          <span class="dot">·</span>
+          <a
+            href="http://lattes.cnpq.br/8611418610937092"
+            target="_blank"
+            rel="noopener"
+            >Lattes</a
+          >
+        </p>
+        <p class="footer-note">
+          Atendimento presencial em São Lourenço do Sul (RS) e online para todo
+          o Brasil.
+        </p>
+        <p class="footer-note">
+          Este site não oferece atendimento de emergência. 
+        </p>
+        <p class="footer-note">
+          Em caso de crise, ligue <strong>188</strong> (CVV).
+        </p>
+
+        <p class="footer-copy">
+          © 2026 Juliana Roloff. Todos os direitos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <a
+      href="https://wa.me/5553984060277"
+      class="wa-float"
+      target="_blank"
+      rel="noopener"
+      aria-label="Falar no WhatsApp"
+    >
+      <svg
+        viewBox="0 0 32 32"
+        width="26"
+        height="26"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.3-.4c-1-1.6-1.5-3.4-1.5-5.3 0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10.1-10 10.1zm5.5-7.5c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.2-.2-.5-.3z"
+        />
+      </svg>
+    </a>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

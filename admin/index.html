@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Painel — Juliana Roloff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================================
+       BASE — paleta do site
+       ========================================================= */
+    body,
+    input,
+    textarea,
+    select,
+    button {
+      font-family: 'Inter', sans-serif !important;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif !important;
+    }
+
+    /* Header e barra lateral */
+    [class*="AppHeader"],
+    [class*="Sidebar"] {
+      background: #FFFFFF !important;
+      border-color: #E0E0E0 !important;
+    }
+    [data-theme="dark"] [class*="AppHeader"],
+    [data-theme="dark"] [class*="Sidebar"] {
+      background: #0A0A0A !important;
+      border-color: rgba(255,255,255,0.10) !important;
+    }
+
+    /* Botões primários (Publicar, Novo) */
+    [class*="ToolbarButton"],
+    [class*="btnPrimary"],
+    button[class*="primary"] {
+      background: #0A0A0A !important;
+      color: #FFFFFF !important;
+      border-radius: 2px !important;
+      border: none !important;
+    }
+    [class*="ToolbarButton"]:hover,
+    [class*="btnPrimary"]:hover {
+      background: #2a2622 !important;
+    }
+
+    /* Inputs */
+    input[type="text"],
+    input[type="url"],
+    textarea,
+    select {
+      border-radius: 2px !important;
+      border-color: #C0C0C0 !important;
+    }
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #0A0A0A !important;
+      box-shadow: 0 0 0 1px #0A0A0A !important;
+    }
+
+    /* Links */
+    a { color: #0A0A0A !important; }
+
+    /* =========================================================
+       DESTAQUE NO BOTÃO "ADD CARD" DO DECAP
+       ========================================================= */
+    [class*="ListControl"] [class*="ToolbarButton"],
+    [class*="ListControl"] button[class*="primary"],
+    button[class*="AddButton"],
+    [class*="ListControl"] [class*="addButton"] {
+      background: #1A1714 !important;
+      color: #FFFFFF !important;
+      font-size: 1rem !important;
+      font-weight: 600 !important;
+      padding: 12px 24px !important;
+      border-radius: 4px !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+      transition: background .2s, box-shadow .2s, transform .15s !important;
+    }
+    [class*="ListControl"] [class*="ToolbarButton"]:hover,
+    [class*="ListControl"] button[class*="primary"]:hover,
+    button[class*="AddButton"]:hover {
+      background: #2a2622 !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.22) !important;
+      transform: translateY(-1px) !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Widget de login do Netlify Identity -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <!-- Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+</body>
+</html>

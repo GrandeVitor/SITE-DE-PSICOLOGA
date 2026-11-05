@@ -1,0 +1,27 @@
+{
+  "itens": [
+    { "tipo": "Vídeo", "titulo": "O que é Psicoterapia", "link": "https://youtu.be/kRT6cJ7ilMU", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "Passageiros no Ônibus — Metáfora da ACT (Terapia de Aceitação e Compromisso)", "link": "https://youtu.be/4JxPsNvFIA8", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "Três níveis de seleção do comportamento: filogênese, ontogênese e cultura — behaviorismo radical", "link": "https://www.youtube.com/watch?v=qeaZXSuxSGE", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "A reação da mãe muda o comportamento de um bebê (Still Face Experiment, Dr. Edward Tronick)", "link": "https://youtu.be/Dl5Qi5ICLEE", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "Cultura e Comportamento: como o ambiente social molda nossas ações", "link": "https://youtu.be/tfusmr9Ruzc", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "O que são habilidades sociais?", "link": "https://youtu.be/f8Y74DaRAZM", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "Assertividade", "link": "https://youtu.be/O3B0-SCblDo", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "Epigenética: entenda essa nova fronteira na Ciência", "link": "https://youtu.be/naXBk4mMW6o", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "Breve práctica Mindfulness para adolescentes y principiantes", "link": "https://youtu.be/lifANBWEIGU", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "Como o Brasil se viciou em calmante?", "link": "https://youtu.be/2TYx-JJ3hlk", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "O que é análise funcional? Para que ela serve na clínica comportamental? — Gabriel Cândido", "link": "https://youtu.be/hlsbTK9SoKQ", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "O terapeuta deve ter respostas para tudo", "link": "https://youtu.be/0tNKqXrr5dY", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "Análise do Comportamento VS Terapia Cognitivo-Comportamental", "link": "https://youtu.be/VCOYXkau9U4", "imagem": "" },
+    { "tipo": "Vídeo", "titulo": "Behavior Goes Where Reinforcement Flows: The Matching Law, Behavior Bits Parent's Edition", "link": "https://youtu.be/Dc0hOdnng3Y?si=tLncmcR7OK1xxBsA", "imagem": "" },
+    { "tipo": "Texto", "titulo": "A chave para a felicidade, segundo o maior estudo já feito sobre o assunto", "link": "https://www.bbc.com/portuguese/articles/cxe3pgjzj3no", "imagem": "/imagens/image1.jpg" },
+    { "tipo": "Texto", "titulo": "Brasil é o país mais ansioso do mundo, diz a OMS", "link": "https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2019/06/05/brasil-e-o-pais-mais-ansioso-do-mundo-segundo-a-oms.htm", "imagem": "/imagens/image2.jpg" },
+    { "tipo": "Texto", "titulo": "Mais amor, por favor — Uma análise comportamental do Amor", "link": "https://comportese.com/2016/11/22/amor/", "imagem": "/imagens/image3.jpg" },
+    { "tipo": "Texto", "titulo": "Cultura da evitação: esquiva experiencial como prática cultural", "link": "https://comportese.com/2025/07/07/cultura-da-evitacao-esquiva-experiencial-como-pratica-cultural/", "imagem": "/imagens/image4.jpg" },
+    { "tipo": "Texto", "titulo": "Morre Paul Ekman, o psicólogo das emoções", "link": "https://www.revistaquestaodeciencia.com.br/artigo/2025/12/08/morre-paul-ekman-o-psicologo-das-emocoes", "imagem": "/imagens/image5.jpeg" },
+    { "tipo": "Podcast", "titulo": "Imposturas Filosóficas — Por que Behaviorismo? (com Roberta Kovac)", "link": "https://open.spotify.com/episode/6nwkBlRNaz7MRexJNueGeU?si=7Hlet3JTR02aqBGSJAU2cA&utm_source=copy-link&nd=1&dlsi=3e6ba3b92a1842aa", "imagem": "/imagens/image6.jpg" },
+    { "tipo": "Podcast", "titulo": "ACEaráCAST — Análise do comportamento e humor cearense: comportamento alimentar com Lucas Lima", "link": "https://open.spotify.com/episode/59VcfyOfeLVm11rgtdtjMl?si=nFKmbAFKRdyqSr1a4pEr8w&nd=1&dlsi=f4cea3e48fee4d21", "imagem": "/imagens/image7.jpg" },
+    { "tipo": "Artigo", "titulo": "Autogerenciamento: proposição de comportamentos constituintes desse repertório", "link": "https://doi.org/10.32870/ac.v34i3.88931", "imagem": "/imagens/image8.png" },
+    { "tipo": "Capítulo", "titulo": "Função do Comportamento e do DSM: terapeutas analítico-comportamentais discutem a psicopatologia", "link": "https://gedacmt.wordpress.com/wp-content/uploads/2016/12/func3a7c3a3o-do-cpto-e-dsm-psicopatologia.pdf", "imagem": "/imagens/image9.png" }
+  ]
+}
