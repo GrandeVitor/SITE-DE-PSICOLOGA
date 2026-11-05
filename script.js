@@ -416,10 +416,22 @@
 })();
 
 /* =========================================================
-   LER MAIS (collapse de texto)
+   LER MAIS (collapse de texto) — com suporte a PT/EN
    ========================================================= */
 (function () {
   const buttons = document.querySelectorAll('.read-more-btn');
+  if (!buttons.length) return;
+
+  // Detecta o idioma da página (<html lang="pt-BR"> ou <html lang="en">)
+  const lang = (document.documentElement.lang || 'pt').toLowerCase().startsWith('en') ? 'en' : 'pt';
+
+  // Textos do botão por idioma
+  const TEXTS = {
+    pt: { open: 'Continuar lendo', close: 'Mostrar menos' },
+    en: { open: 'Continue reading', close: 'Show less' }
+  };
+
+  const labels = TEXTS[lang];
 
   buttons.forEach(btn => {
     const targetId = btn.dataset.target;
@@ -428,11 +440,16 @@
 
     const label = btn.querySelector('.read-more-label');
 
+    // Garante que o texto inicial esteja no idioma certo
+    if (label && !content.classList.contains('is-open')) {
+      label.textContent = labels.open;
+    }
+
     btn.addEventListener('click', () => {
       const isOpen = content.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       if (label) {
-        label.textContent = isOpen ? 'Mostrar menos' : 'Continuar lendo';
+        label.textContent = isOpen ? labels.close : labels.open;
       }
     });
   });
