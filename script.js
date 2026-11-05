@@ -324,11 +324,8 @@
   if (chosen === 'en') { window.location.replace('/en/'); return; }
   if (chosen === 'pt') return;
 
-  const userLang = (navigator.language || navigator.userLanguage || 'pt').toLowerCase();
-
-  if (userLang.startsWith('en')) {
-    window.location.replace('/en/');
-  }
+  // Sem detecção de navegador: fica em PT por padrão.
+  // (Quem quiser EN, clica no seletor "EN".)
 })();
 
 /* =========================================================
