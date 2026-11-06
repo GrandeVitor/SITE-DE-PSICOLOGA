@@ -324,8 +324,11 @@
   if (chosen === 'en') { window.location.replace('/en/'); return; }
   if (chosen === 'pt') return;
 
-  // Sem detecção de navegador: fica em PT por padrão.
-  // (Quem quiser EN, clica no seletor "EN".)
+  const userLang = (navigator.language || navigator.userLanguage || 'pt').toLowerCase();
+
+  if (userLang.startsWith('en')) {
+    window.location.replace('/en/');
+  }
 })();
 
 /* =========================================================
@@ -413,22 +416,10 @@
 })();
 
 /* =========================================================
-   LER MAIS (collapse de texto) — com suporte a PT/EN
+   LER MAIS (collapse de texto)
    ========================================================= */
 (function () {
   const buttons = document.querySelectorAll('.read-more-btn');
-  if (!buttons.length) return;
-
-  // Detecta o idioma da página (<html lang="pt-BR"> ou <html lang="en">)
-  const lang = (document.documentElement.lang || 'pt').toLowerCase().startsWith('en') ? 'en' : 'pt';
-
-  // Textos do botão por idioma
-  const TEXTS = {
-    pt: { open: 'Continuar lendo', close: 'Mostrar menos' },
-    en: { open: 'Continue reading', close: 'Show less' }
-  };
-
-  const labels = TEXTS[lang];
 
   buttons.forEach(btn => {
     const targetId = btn.dataset.target;
@@ -437,16 +428,11 @@
 
     const label = btn.querySelector('.read-more-label');
 
-    // Garante que o texto inicial esteja no idioma certo
-    if (label && !content.classList.contains('is-open')) {
-      label.textContent = labels.open;
-    }
-
     btn.addEventListener('click', () => {
       const isOpen = content.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       if (label) {
-        label.textContent = isOpen ? labels.close : labels.open;
+        label.textContent = isOpen ? 'Mostrar menos' : 'Continuar lendo';
       }
     });
   });
