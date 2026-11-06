@@ -324,11 +324,8 @@
   if (chosen === 'en') { window.location.replace('/en/'); return; }
   if (chosen === 'pt') return;
 
-  const userLang = (navigator.language || navigator.userLanguage || 'pt').toLowerCase();
-
-  if (userLang.startsWith('en')) {
-    window.location.replace('/en/');
-  }
+  // Sem detecção de navegador: fica em PT por padrão.
+  // (Quem quiser EN, clica no seletor "EN".)
 })();
 
 /* =========================================================
@@ -416,10 +413,22 @@
 })();
 
 /* =========================================================
-   LER MAIS (collapse de texto)
+   LER MAIS (collapse de texto) — com suporte a PT/EN
    ========================================================= */
 (function () {
   const buttons = document.querySelectorAll('.read-more-btn');
+  if (!buttons.length) return;
+
+  // Detecta o idioma da página (<html lang="pt-BR"> ou <html lang="en">)
+  const lang = (document.documentElement.lang || 'pt').toLowerCase().startsWith('en') ? 'en' : 'pt';
+
+  // Textos do botão por idioma
+  const TEXTS = {
+    pt: { open: 'Continuar lendo', close: 'Mostrar menos' },
+    en: { open: 'Continue reading', close: 'Show less' }
+  };
+
+  const labels = TEXTS[lang];
 
   buttons.forEach(btn => {
     const targetId = btn.dataset.target;
@@ -428,12 +437,43 @@
 
     const label = btn.querySelector('.read-more-label');
 
+    // Garante que o texto inicial esteja no idioma certo
+    if (label && !content.classList.contains('is-open')) {
+      label.textContent = labels.open;
+    }
+
     btn.addEventListener('click', () => {
       const isOpen = content.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       if (label) {
-        label.textContent = isOpen ? 'Mostrar menos' : 'Continuar lendo';
+        label.textContent = isOpen ? labels.close : labels.open;
       }
     });
   });
+})();
+
+/* =========================================================
+   NETLIFY IDENTITY — trata o token de convite na URL
+   (para o link do convite abrir a tela de definir senha)
+   ========================================================= */
+(function () {
+  if (!window.netlifyIdentity) return;
+
+  // Se a URL tem #invite_token=..., abre o modal de definir senha
+  if (window.location.hash.includes('invite_token')) {
+    window.netlifyIdentity.on('init', function (user) {
+      if (!user) {
+        window.netlifyIdentity.open('signup');
+      }
+    });
+  }
+
+  // Se a URL tem #recovery_token=..., abre o modal de redefinir senha
+  if (window.location.hash.includes('recovery_token')) {
+    window.netlifyIdentity.on('init', function (user) {
+      if (!user) {
+        window.netlifyIdentity.open('recovery');
+      }
+    });
+  }
 })();
