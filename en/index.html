@@ -14,6 +14,7 @@
         }
       })();
     </script>
+    <script>document.documentElement.classList.add("js");</script>
     <title>Juliana Roloff | Clinical Psychologist — CRP 07/46432</title>
     <meta
       content="Clinical psychologist in São Lourenço do Sul, Rio Grande do Sul, Brazil. Individual psychotherapy for adults and adolescents aged 13 and over, in person and online, in Portuguese and English. CRP 07/46432."
@@ -63,7 +64,6 @@
     <link href="/style.css" rel="stylesheet" />
       <!-- Widget do Netlify Identity (para o convite funcionar na raiz) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
   </head>
   <body>
     <a class="skip-link" href="#inicio">Skip to content</a>
@@ -150,376 +150,112 @@
     </header>
     <main>
       <!-- 1. HOME -->
-      <section class="hero" id="inicio">
-        <div class="container-narrow hero-inner">
-          <p class="eyebrow">
-            Clinical Psychology · CRP 07/46432 · São Lourenço do Sul, RS, Brazil
-          </p>
-          <h1>Juliana Roloff</h1>
-          <p class="lead">
-                Behavioral science to understand what sustains distress and what supports change.
-              </p>
-          <a
-            class="btn btn-primary"
-            href="https://wa.me/5553984060277"
-            rel="noopener"
-            target="_blank"
-          >
-            Book a session via WhatsApp
-          </a>
-          <a
-            aria-label="Scroll to the About Me section"
-            class="scroll-cue"
-            href="#apresentacao"
-          >
-            <svg
-              fill="none"
-              height="20"
-              stroke="currentColor"
-              stroke-width="1.5"
-              viewbox="0 0 24 24"
-              width="20"
-            >
-              <path d="M12 5v14M6 13l6 6 6-6"></path>
-            </svg>
-          </a>
+      <section id="inicio" class="hero hero--video">
+        <div class="hero-media" aria-hidden="true">
+          <video class="hero-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture poster="/video/hero-poster.jpg">
+            <source src="/video/hero.mp4" type="video/mp4" />
+          </video>
+          <div class="hero-veil"></div>
         </div>
+        <div class="container hero-inner">
+          <p class="eyebrow">Clinical Psychology · CRP 07/46432 · São Lourenço do Sul, RS, Brazil</p>
+          <h1 class="hero-title" aria-label="Juliana Roloff">
+            <span class="t-line t-a"><span>Juliana</span></span>
+            <span class="t-line t-b"><span>Roloff</span></span>
+          </h1>
+          <p class="lead">Behavioral science to understand <em>what sustains</em> distress and <em>what supports</em> change.</p>
+          <ul class="chips" style="list-style:none;padding:0"><li class="chip">In person & online</li><li class="chip">Portuguese & English</li><li class="chip">Adults & teens 13+</li></ul>
+          <div class="hero-cta">
+            <a href="https://wa.me/5553984060277" target="_blank" rel="noopener" class="btn btn-primary">Book a session via WhatsApp</a>
+            <a href="#fundamentos" class="btn btn-ghost">My approach</a>
+          </div>
+        </div>
+        <a href="#apresentacao" class="scroll-cue" aria-label="Scroll to the About Me section">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </a>
       </section>
       <!-- 2. ABOUT ME -->
-      <section class="section" id="apresentacao">
+      <section id="apresentacao" class="section">
         <div class="container">
           <p class="section-label"><span>01</span> About Me</p>
           <div class="split">
-            <div class="split-text">
-              <h2>
-                I am a psychologist and philosopher, a Brazilian woman from Rio
-                Grande do Sul. I earned my degree in Psychology from UFCSPA in
-                2026 and a teaching degree in Philosophy from PUCRS in 2020. I
-                am currently pursuing a specialization in Clinical Behavior
-                Analysis at IBAC.
-              </h2>
-              <p>
-                My academic background brings together two complementary fields.
-                In philosophy, I focused on the analytic tradition, with an
-                emphasis on logic, epistemology, and philosophy of science. In
-                psychology, I found in Behavior Analysis a way to understand and
-                address human suffering without giving up critical thinking,
-                translated into a socially responsible scientific practice. My
-                teaching degree in Philosophy is not a departure from
-                behavior-analytic clinical practice: teaching and clinical work
-                share the same premise—that of creating the conditions in which
-                new skills and ways of acting can develop.
-              </p>
-              <div class="read-more-content" id="quem-sou-mais">
-                <p>
-                  Rather than starting from a distinction between normal and
-                  pathological, I take a functional approach to behavior: I look
-                  at how it is organized through the relationship between the
-                  person, their history, and their current life circumstances,
-                  and I intervene in those relationships to promote individual
-                  and collective well-being.
-                </p>
-                <p>
-                  During my Psychology training, I worked in several public
-                  institutions, always under on-site supervision and faculty
-                  guidance. For two years, I worked in a psychiatric outpatient
-                  clinic within Brazil’s Unified Health System (SUS), at
-                  Hospital Psiquiátrico São Pedro. Guided by the Expanded Clinic
-                  approach within the field of Public Health, I worked with
-                  cases of moderate and high complexity, involving histories of
-                  severe psychosocial vulnerability, various forms of violence,
-                  and chronic psychological distress, including problematic
-                  substance use. I also took part in a research group at UFCSPA,
-                  in partnership with the Rio Grande do Sul Court of Justice
-                  (TJ-RS), which developed and evaluated an intervention
-                  protocol for men accused of violence against women. During the
-                  2024 floods in Rio Grande do Sul, I volunteered at a rescue
-                  site, providing psychological first aid as part of the support
-                  team from UFCSPA’s Psychology program.
-                </p>
-                <p>
-                  I also have training in Therapeutic Accompaniment (Instituto
-                  Singular) and additional training in Process-Based Therapy
-                  (Diade Lab). I currently see clients in private practice,
-                  offering in-person and online psychotherapy in Portuguese and
-                  English. I hold an English proficiency certificate (TOEFL
-                  iBT).
-                </p>
-              </div>
-              <button
-                aria-expanded="false"
-                class="read-more-btn"
-                data-target="quem-sou-mais"
-              >
-                <span class="read-more-label">Continue reading</span>
-                <svg
-                  aria-hidden="true"
-                  class="read-more-icon"
-                  fill="none"
-                  height="16"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewbox="0 0 24 24"
-                  width="16"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
+            <div class="split-text" data-reveal>
+              <h2>Psychologist and philosopher.</h2>
+              <p class="about-lead">Psychology (UFCSPA), Philosophy (PUCRS) and a specialization in progress in Clinical Behavior Analysis. I see clients in person and online, in Portuguese and English.</p>
+              <div class="stats"><div class="stat"><span class="stat-num" data-count="2">2</span><span class="stat-label">years in a SUS psychiatric outpatient clinic</span></div><div class="stat"><span class="stat-num" data-count="5">5</span><span class="stat-label">degrees and trainings</span></div><div class="stat"><span class="stat-num" data-count="2">2</span><span class="stat-label">languages of practice</span></div></div>
+              <ol class="timeline"><li><span class="tl-when">2020</span><span class="tl-what">Teaching degree in Philosophy · PUCRS</span><span class="tl-sub">Logic, epistemology and philosophy of science</span></li><li><span class="tl-when">2026</span><span class="tl-what">Degree in Psychology · UFCSPA</span><span class="tl-sub">Placements in public institutions, under supervision</span></li><li><span class="tl-when">In progress</span><span class="tl-what">Specialization in Clinical Behavior Analysis · IBAC</span></li><li><span class="tl-when">Also</span><span class="tl-what">Therapeutic Accompaniment (Instituto Singular) and Process-Based Therapy (Diade Lab)</span><span class="tl-sub">English proficiency: TOEFL iBT</span></li></ol>
             </div>
-            <figure class="split-media">
-              <img
-                alt="Portrait of psychologist Juliana Roloff"
-                loading="lazy"
-                src="/imagens/foto-apresentacao.jpeg"
-              />
+            <figure class="split-media" data-reveal>
+              <img src="/imagens/foto-apresentacao.jpeg" alt="Portrait of psychologist Juliana Roloff" loading="lazy" />
             </figure>
+          </div>
+
+          <div class="exp-grid"><article class="exp-card" data-reveal><svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14"/><path d="M12 9v6M9 12h6"/><path d="M3 21h18"/></svg><h3>SUS psychiatric outpatient clinic</h3><p class="exp-sum">2 years at Hospital Psiquiátrico São Pedro, in moderate- and high-complexity cases.</p><details class="more more--link"><summary>See details</summary><div class="more-body"><p>For two years, I worked in a psychiatric outpatient clinic within Brazil’s Unified Health System (SUS), at Hospital Psiquiátrico São Pedro. Guided by the Expanded Clinic approach within the field of Public Health, I worked with cases of moderate and high complexity, involving histories of severe psychosocial vulnerability, various forms of violence, and chronic psychological distress, including problematic substance use.</p></div></details></article><article class="exp-card" data-reveal><svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><h3>Research · UFCSPA + TJ-RS</h3><p class="exp-sum">Intervention protocol for men accused of violence against women.</p><details class="more more--link"><summary>See details</summary><div class="more-body"><p>I also took part in a research group at UFCSPA, in partnership with the Rio Grande do Sul Court of Justice (TJ-RS), which developed and evaluated an intervention protocol for men accused of violence against women.</p></div></details></article><article class="exp-card" data-reveal><svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 16c2.5-3 5-3 7.5 0s5 3 7.5 0 3-2 5-1"/><path d="M2 10c2.5-3 5-3 7.5 0s5 3 7.5 0 3-2 5-1"/></svg><h3>2024 floods</h3><p class="exp-sum">Volunteer at a rescue site, providing psychological first aid.</p><details class="more more--link"><summary>See details</summary><div class="more-body"><p>During the 2024 floods in Rio Grande do Sul, I volunteered at a rescue site, providing psychological first aid as part of the support team from UFCSPA’s Psychology program.</p></div></details></article></div>
+
+          <div class="about-full">
+            <div class="read-more-content" id="quem-sou-mais"><p class="read-more-lead">I am a psychologist and philosopher, a Brazilian woman from Rio Grande do Sul. I earned my degree in Psychology from UFCSPA in 2026 and a teaching degree in Philosophy from PUCRS in 2020. I am currently pursuing a specialization in Clinical Behavior Analysis at IBAC.</p><p>My academic background brings together two complementary fields. In philosophy, I focused on the analytic tradition, with an emphasis on logic, epistemology, and philosophy of science. In psychology, I found in Behavior Analysis a way to understand and address human suffering without giving up critical thinking, translated into a socially responsible scientific practice. My teaching degree in Philosophy is not a departure from behavior-analytic clinical practice: teaching and clinical work share the same premise—that of creating the conditions in which new skills and ways of acting can develop.</p><p>Rather than starting from a distinction between normal and pathological, I take a functional approach to behavior: I look at how it is organized through the relationship between the person, their history, and their current life circumstances, and I intervene in those relationships to promote individual and collective well-being.</p><p>During my Psychology training, I worked in several public institutions, always under on-site supervision and faculty guidance.</p><p>I also have training in Therapeutic Accompaniment (Instituto Singular) and additional training in Process-Based Therapy (Diade Lab). I currently see clients in private practice, offering in-person and online psychotherapy in Portuguese and English. I hold an English proficiency certificate (TOEFL iBT).</p></div>
+            <button class="read-more-btn" data-target="quem-sou-mais" aria-expanded="false">
+              <span class="read-more-label">Continue reading</span>
+              <svg class="read-more-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
           </div>
         </div>
       </section>
       <!-- 3. SERVICES -->
-      <section class="section section-alt" id="servicos">
+      <section id="servicos" class="section section-alt">
         <div class="container">
           <p class="section-label"><span>02</span> Services</p>
-          <p class="section-intro">
-            Individual psychotherapy for adults and adolescents aged 13 and
-            over, available in person or online, in Portuguese and English.
-          </p>
-          <div class="services-facts">
-            <div class="fact">
-              <svg
-                aria-hidden="true"
-                class="fact-icon"
-                fill="none"
-                height="28"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                viewbox="0 0 24 24"
-                width="28"
-              >
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-              <span class="fact-label">Who I work with</span>
-              <span class="fact-value"
-                >Adults and adolescents aged 13 and over, in Portuguese and
-                English.</span
-              >
-            </div>
-            <div class="fact">
-              <svg
-                aria-hidden="true"
-                class="fact-icon"
-                fill="none"
-                height="28"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                viewbox="0 0 24 24"
-                width="28"
-              >
-                <rect height="14" rx="2" ry="2" width="20" x="2" y="3"></rect>
-                <line x1="8" x2="16" y1="21" y2="21"></line>
-                <line x1="12" x2="12" y1="17" y2="21"></line>
-              </svg>
-              <span class="fact-label">Format</span>
-              <span class="fact-value">In person or online</span>
-            </div>
-            <div class="fact">
-              <svg
-                aria-hidden="true"
-                class="fact-icon"
-                fill="none"
-                height="28"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                viewbox="0 0 24 24"
-                width="28"
-              >
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              <span class="fact-label">Sessions</span>
-              <span class="fact-value">50 minutes, once a week</span>
-            </div>
-          </div>
-          <div class="services-notes">
-            <h3>Before You Begin</h3>
-            <ul>
-              <li>
-                <strong>Adolescents:</strong> Consent from a parent or legal
-                guardian is required. The first session is held with them only,
-                to discuss the service and clarify what information may be
-                shared with the family. Individual sessions begin after that meeting.
-              </li>
-              <li>
-                <strong>Online sessions:</strong> Please have a private space
-                where you can speak freely without being overheard or
-                interrupted.
-              </li>
-              <li>
-                <strong>Reimbursement:</strong> I am not affiliated with health
-                insurance plans, but I provide receipts for paid sessions so you
-                can request reimbursement from your insurer. Coverage for
-                psychotherapy sessions is a right provided for under Brazilian
-                Law No. 9,656/98.
-              </li>
-            </ul>
-            <p>
-              The length of therapy varies according to your needs. Because
-              change is not linear, ending therapy is assessed collaboratively,
-              in light of the therapeutic goals established at the outset.
-            </p>
-            <p>
-              To get started, contact me via
-              <a
-                class="link-inline"
-                href="https://wa.me/5553984060277"
-                rel="noopener"
-                target="_blank"
-                >WhatsApp</a
-              >
-              or fill out the
-              <a class="link-inline" href="#contato">contact form</a>.
-            </p>
+          <div class="services-facts"><div class="fact" data-reveal><svg aria-hidden="true" class="fact-icon" fill="none" height="28" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="28">
+<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+<circle cx="9" cy="7" r="4"></circle>
+<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+</svg><span class="fact-label">Who I work with</span><span class="fact-value">Adults and adolescents aged 13 and over, in Portuguese and English.</span></div><div class="fact" data-reveal><svg aria-hidden="true" class="fact-icon" fill="none" height="28" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="28">
+<rect height="14" rx="2" ry="2" width="20" x="2" y="3"></rect>
+<line x1="8" x2="16" y1="21" y2="21"></line>
+<line x1="12" x2="12" y1="17" y2="21"></line>
+</svg><span class="fact-label">Format</span><span class="fact-value">In person or online</span></div><div class="fact" data-reveal><svg aria-hidden="true" class="fact-icon" fill="none" height="28" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="28">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg><span class="fact-label">Sessions</span><span class="fact-value">50 minutes, once a week</span></div><div class="fact" data-reveal><svg class="fact-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="fact-label">Languages</span><span class="fact-value">Portuguese and English</span></div></div>
+          <h3 class="faq-title" style="margin-top:48px">Before You Begin</h3>
+          <div class="faq" data-reveal><details class="more"><summary>Adolescents</summary><div class="more-body"><p>Consent from a parent or legal guardian is required. The first session is held with them only, to discuss the service and clarify what information may be shared with the family. Individual sessions begin after that meeting.</p></div></details><details class="more"><summary>Online sessions</summary><div class="more-body"><p>Please have a private space where you can speak freely without being overheard or interrupted.</p></div></details><details class="more"><summary>Reimbursement</summary><div class="more-body"><p>I am not affiliated with health insurance plans, but I provide receipts for paid sessions so you can request reimbursement from your insurer. Coverage for psychotherapy sessions is a right provided for under Brazilian Law No. 9,656/98.</p></div></details><details class="more"><summary>How long therapy lasts</summary><div class="more-body"><p>The length of therapy varies according to your needs. Because change is not linear, ending therapy is assessed collaboratively, in light of the therapeutic goals established at the outset.</p></div></details></div>
+          <div class="cta-row">
+            <a href="https://wa.me/5553984060277" target="_blank" rel="noopener" class="btn btn-primary">Book via WhatsApp</a>
+            <a href="#contato" class="btn btn-ghost">Fill out the form</a>
           </div>
         </div>
       </section>
       <!-- 4. MY APPROACH -->
-      <section class="section" id="fundamentos">
-        <div class="container-narrow">
+      <section id="fundamentos" class="section">
+        <div class="container">
           <p class="section-label"><span>03</span> My Approach</p>
-          <p>
-                People who seek therapy have often already tried to solve their problem on their own: changing habits, doing research, and promising themselves that things would be different. It works for a while, but the distress returns, and the question remains: <em>why do I do this, even though I know it harms me?</em>
-              </p>
-          <p>
-                The most common explanations point inward, such as a lack of willpower, a chemical imbalance, or a certain personality type. Behavior Analysis, the approach that guides my work, offers another perspective: <strong>what you do is shaped by the relationship between you and your environment</strong>. You repeat certain behaviors because, in certain situations, they have produced certain effects, and you avoid others because of the weight of their consequences.
-              </p>
-          <div class="read-more-content" id="como-atuo-mais">
-            <p>
-                What we call a person’s “way of being” is, to a large extent, a set of learned patterns repeated often enough to seem natural. This does not dismiss your emotions; rather, it means no longer treating them as causes. If you say you shouted because you were angry, anger does not explain the shouting. Feeling angry and shouting happen together; it is this closeness that makes it seem as though one caused the other, when both are responses to the same conditions.
-              </p>
-            <p>
-                <strong>Even what seems irrational serves a function, and discovering that function opens a path to change.</strong> You know your own story; I bring the professional training to identify patterns that may go unnoticed when you are deeply immersed in what you are experiencing. We build goals together and reassess them as the process moves forward.
-              </p>
-            <p>
-                None of this means taking suffering lightly. Regardless of its origin—innate, learned, or a combination of both—<strong>suffering is real, painful, and deserves serious care</strong>. Some situations may require support from multiple professionals. Identifying what kind of care is needed is part of the work.
-              </p>
-            <p>
-                I cannot promise that you will leave every session feeling better, because talking about what hurts can be uncomfortable. It is true that what you share changes the course of therapy. It is equally true that <strong>it will not be turned into a verdict about you or into moralizing advice</strong>. This is not a matter of kindness; it is a clinical requirement: no one keeps talking about what hurts if the listener’s response makes the pain worse.
-              </p>
-            <p>
-              My responses are not neutral, just like anyone else’s. Part of my
-              work is to examine them in supervision and adjust how I address
-              the effects they have on you.
-            </p>
-            <p>
-              The ultimate goal is for you to learn how to analyze and manage
-              the factors that maintain your distress, so you can address them
-              autonomously in different areas of your life in ways that support
-              both your well-being and the well-being of the environment in
-              which you live. The two are inseparable.
-            </p>
+          <h2 data-reveal>Why do we repeat what hurts us?</h2>
+          <div class="abc" data-reveal>
+            <div class="abc-box">Situation</div><span class="abc-arrow" aria-hidden="true"></span>
+            <div class="abc-box">What you do</div><span class="abc-arrow" aria-hidden="true"></span>
+            <div class="abc-box">What it produces</div>
           </div>
-          <button
-            aria-expanded="false"
-            class="read-more-btn"
-            data-target="como-atuo-mais"
-          >
-            <span class="read-more-label">Continue reading</span>
-            <svg
-              aria-hidden="true"
-              class="read-more-icon"
-              fill="none"
-              height="16"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewbox="0 0 24 24"
-              width="16"
-            >
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
+          <p class="abc-cap">This is the relationship in which behavior is organized.</p>
+          <div class="story" data-reveal>
+            <div class="story-track" id="story-track" tabindex="0" aria-label="My Approach"><article class="story-card"><span class="story-n">01</span><h3>Already tried solving it on your own?</h3><p class="story-sum">You change habits and promise it will be different. It works for a while, then the distress returns.</p><details class="more more--link"><summary>Read more</summary><div class="more-body"><p>People who seek therapy have often already tried to solve their problem on their own: changing habits, doing research, and promising themselves that things would be different. It works for a while, but the distress returns, and the question remains: <em>why do I do this, even though I know it harms me?</em></p></div></details></article><article class="story-card"><span class="story-n">02</span><h3>Your environment shapes what you do</h3><p class="story-sum">It is not a lack of willpower: behaviors repeat because of the effects they produce.</p><details class="more more--link"><summary>Read more</summary><div class="more-body"><p>The most common explanations point inward, such as a lack of willpower, a chemical imbalance, or a certain personality type. Behavior Analysis, the approach that guides my work, offers another perspective: <strong>what you do is shaped by the relationship between you and your environment</strong>. You repeat certain behaviors because, in certain situations, they have produced certain effects, and you avoid others because of the weight of their consequences.</p></div></details></article><article class="story-card"><span class="story-n">03</span><h3>Emotions accompany, they don't explain</h3><p class="story-sum">Feeling angry and shouting happen together, and both respond to the same conditions.</p><details class="more more--link"><summary>Read more</summary><div class="more-body"><p>What we call a person’s “way of being” is, to a large extent, a set of learned patterns repeated often enough to seem natural. This does not dismiss your emotions; rather, it means no longer treating them as causes. If you say you shouted because you were angry, anger does not explain the shouting. Feeling angry and shouting happen together; it is this closeness that makes it seem as though one caused the other, when both are responses to the same conditions.</p></div></details></article><article class="story-card"><span class="story-n">04</span><h3>Even what seems irrational has a function</h3><p class="story-sum">Finding out what a behavior serves opens a path to change.</p><details class="more more--link"><summary>Read more</summary><div class="more-body"><p><strong>Even what seems irrational serves a function, and discovering that function opens a path to change.</strong> You know your own story; I bring the professional training to identify patterns that may go unnoticed when you are deeply immersed in what you are experiencing. We build goals together and reassess them as the process moves forward.</p></div></details></article><article class="story-card"><span class="story-n">05</span><h3>Suffering is real</h3><p class="story-sum">It hurts, deserves serious care and sometimes support from several professionals.</p><details class="more more--link"><summary>Read more</summary><div class="more-body"><p>None of this means taking suffering lightly. Regardless of its origin—innate, learned, or a combination of both—<strong>suffering is real, painful, and deserves serious care</strong>. Some situations may require support from multiple professionals. Identifying what kind of care is needed is part of the work.</p></div></details></article><article class="story-card"><span class="story-n">06</span><h3>No verdicts, no lectures</h3><p class="story-sum">What you share is not turned into judgment. That is a clinical requirement, not kindness.</p><details class="more more--link"><summary>Read more</summary><div class="more-body"><p>I cannot promise that you will leave every session feeling better, because talking about what hurts can be uncomfortable. It is true that what you share changes the course of therapy. It is equally true that <strong>it will not be turned into a verdict about you or into moralizing advice</strong>. This is not a matter of kindness; it is a clinical requirement: no one keeps talking about what hurts if the listener’s response makes the pain worse.</p><p>My responses are not neutral, just like anyone else’s. Part of my work is to examine them in supervision and adjust how I address the effects they have on you.</p></div></details></article><article class="story-card"><span class="story-n">07</span><h3>The goal is your autonomy</h3><p class="story-sum">That you learn to analyze and manage what sustains your distress.</p><details class="more more--link"><summary>Read more</summary><div class="more-body"><p>The ultimate goal is for you to learn how to analyze and manage the factors that maintain your distress, so you can address them autonomously in different areas of your life in ways that support both your well-being and the well-being of the environment in which you live. The two are inseparable.</p></div></details></article></div>
+            <div class="story-ctrl">
+              <div class="story-dots" id="story-dots"></div>
+              <div class="story-btns"><button type="button" class="story-btn" id="story-prev" aria-label="Previous"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button><button type="button" class="story-btn" id="story-next" aria-label="Next"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+            </div>
+          </div>
         </div>
       </section>
       <!-- 5. THE PROCESS -->
-      <section class="section section-alt" id="processos">
+      <section id="processos" class="section section-alt">
         <div class="container">
           <p class="section-label"><span>04</span> The Process</p>
-          <h2>What to Expect When You Get in Touch</h2>
-          <ol class="process-list">
-            <li>
-              <div class="process-num">01</div>
-              <div class="process-body">
-                <h3>Initial Contact and Scheduling</h3>
-                <p class="muted">
-                  We discuss scheduling, fees, and the session format (in person
-                  or online). We then schedule the first session.
-                </p>
-              </div>
-            </li>
-            <li>
-              <div class="process-num">02</div>
-              <div class="process-body">
-                <h3>First Session and Beginning the Work</h3>
-                <p class="muted">
-                  In these first meetings, we will focus on your life history
-                  and map out your goals, resources, and difficulties. We will
-                  also agree on how therapy will work: what you can expect from
-                  me, what I expect from you, and how we will handle unexpected
-                  situations.
-                </p>
-              </div>
-            </li>
-            <li>
-              <div class="process-num">03</div>
-              <div class="process-body">
-                <h3>What Maintains Your Distress</h3>
-                <p class="muted">
-                We explore the conditions in which your distress arises: what happens beforehand, what you do, feel, and need, and what all of this produces in your life. The aim is to understand the relationships that sustain it today, without searching for a single cause or something hidden inside you.
-              </p>
-              </div>
-            </li>
-            <li>
-              <div class="process-num">04</div>
-              <div class="process-body">
-                <h3>Putting Strategies into Practice</h3>
-                <p class="muted">
-                  Once we have defined your goals, we develop strategies and put
-                  them into action. The work is not limited to the therapy room;
-                  it also extends to what you try and apply in your everyday
-                  life.
-                </p>
-              </div>
-            </li>
-            <li>
-              <div class="process-num">05</div>
-              <div class="process-body">
-                <h3>Review and Adjustment</h3>
-                <p class="muted">
-                Psychotherapy is an evolving process, not a one-size-fits-all recipe. We regularly review whether our work is effective. If it is, we consolidate the changes until you can continue without therapy. If it is not, we adjust course.
-              </p>
-              </div>
-            </li>
-          </ol>
-          <div class="process-addendum">
+          <h2 data-reveal>What to Expect When You Get in Touch</h2>
+          <div class="steps" role="tablist" data-reveal><button type="button" class="step" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true"><span class="step-n">01</span><span class="step-t">Contact</span></button><button type="button" class="step" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false"><span class="step-n">02</span><span class="step-t">First session</span></button><button type="button" class="step" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false"><span class="step-n">03</span><span class="step-t">What sustains it</span></button><button type="button" class="step" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false"><span class="step-n">04</span><span class="step-t">Strategies</span></button><button type="button" class="step" role="tab" id="tab-5" aria-controls="panel-5" aria-selected="false"><span class="step-n">05</span><span class="step-t">Review</span></button></div>
+          <div class="step-panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1"><h3>Initial Contact and Scheduling</h3><p class="muted">We discuss scheduling, fees, and the session format (in person or online). We then schedule the first session.</p></div><div class="step-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2"><h3>First Session and Beginning the Work</h3><p class="muted">In these first meetings, we will focus on your life history and map out your goals, resources, and difficulties. We will also agree on how therapy will work: what you can expect from me, what I expect from you, and how we will handle unexpected situations.</p></div><div class="step-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3"><h3>What Maintains Your Distress</h3><p class="muted">We explore the conditions in which your distress arises: what happens beforehand, what you do, feel, and need, and what all of this produces in your life. The aim is to understand the relationships that sustain it today, without searching for a single cause or something hidden inside you.</p></div><div class="step-panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4"><h3>Putting Strategies into Practice</h3><p class="muted">Once we have defined your goals, we develop strategies and put them into action. The work is not limited to the therapy room; it also extends to what you try and apply in your everyday life.</p></div><div class="step-panel" role="tabpanel" id="panel-5" aria-labelledby="tab-5"><h3>Review and Adjustment</h3><p class="muted">Psychotherapy is an evolving process, not a one-size-fits-all recipe. We regularly review whether our work is effective. If it is, we consolidate the changes until you can continue without therapy. If it is not, we adjust course.</p></div>
+          <div class="process-addendum" data-reveal>
             <h3>About Our Therapeutic Relationship</h3>
-            <p class="muted">
-              Trust is not a prerequisite for starting therapy; it develops
-              throughout the process. If something I do or say makes you
-              uncomfortable at any point, you can—and should—bring it up in a
-              session. This is not a problem; it is part of the work.
-            </p>
+            <p class="muted">Trust is not a prerequisite for starting therapy; it develops throughout the process. If something I do or say makes you uncomfortable at any point, you can—and should—bring it up in a session. This is not a problem; it is part of the work.</p>
           </div>
         </div>
       </section>
@@ -528,23 +264,11 @@
         <div class="container">
           <p class="section-label"><span>05</span> Contact</p>
           <div class="split split-contact">
-            <div class="split-text">
-              <h2>Let’s Talk</h2>
-              <p class="muted">
-                Fill out the form to ask a question or schedule a session. You
-                can also contact me directly via WhatsApp.
-              </p>
-              <p class="contact-direct">
-                <a
-                  class="link-inline"
-                  href="https://wa.me/5553984060277"
-                  rel="noopener"
-                  target="_blank"
-                >
+            <div class="split-text" data-reveal><h2>Let’s Talk</h2><p class="muted">Ask a question or schedule a session through the form or directly on WhatsApp.</p><ul class="chips chips--left" style="list-style:none;padding:0"><li class="chip">Online throughout Brazil</li><li class="chip">In person in São Lourenço do Sul</li></ul><p class="contact-direct">
+<a class="link-inline" href="https://wa.me/5553984060277" rel="noopener" target="_blank">
                   → WhatsApp
                 </a>
-              </p>
-            </div>
+</p></div>
             <form
               action="https://api.web3forms.com/submit"
               class="contact-form"
@@ -645,20 +369,7 @@
         <div class="container">
           <p class="section-label"><span>06</span> Location</p>
           <div class="split split-location">
-            <div class="split-text">
-              <h2>Where I Practice</h2>
-              <p class="muted">
-                In-person sessions are available in
-                <strong>São Lourenço do Sul, Rio Grande do Sul, Brazil</strong>.
-                I also offer <em>online</em> sessions throughout Brazil, in
-                accordance with the guidelines of Brazil’s Federal Council of
-                Psychology.
-              </p>
-              <p class="muted">
-                The full office address will be provided after your appointment
-                is scheduled.
-              </p>
-            </div>
+            <div class="split-text" data-reveal><h2>Where I Practice</h2><ul class="chips chips--left" style="list-style:none;padding:0"><li class="chip">In person · São Lourenço do Sul, RS</li><li class="chip">Online · throughout Brazil</li></ul><p class="muted">In person in <strong>São Lourenço do Sul, Rio Grande do Sul, Brazil</strong>, and <em>online</em> throughout Brazil, in accordance with the guidelines of Brazil’s Federal Council of Psychology.</p><p class="muted location-note">The full office address will be provided after your appointment is scheduled.</p></div>
             <div class="map-wrapper">
               <iframe
                 allowfullscreen=""
@@ -673,15 +384,7 @@
       </section>
       <!-- 8. RECOMMENDATIONS -->
       <section class="section" id="conteudo">
-        <div class="container">
-          <p class="section-label"><span>07</span> Recommendations</p>
-          <h2>Books, Videos, and Articles</h2>
-          <p class="muted section-intro">
-            Resources to help you understand the therapeutic process and
-            behavioral science. This is not a list of generic tips, but material
-            for those who want to think about behavior more rigorously.
-          </p>
-        </div>
+        <div class="container"><p class="section-label"><span>07</span> Recommendations</p><h2>Books, Videos, and Articles</h2><p class="muted section-intro" style="margin-bottom:24px">Resources for thinking about behavior more rigorously.</p><div class="filters" id="rec-filters" role="group" aria-label="Filter recommendations by type" hidden></div></div>
         <div
           aria-label="Recommended resources"
           aria-roledescription="carousel"
@@ -733,27 +436,27 @@
       </section>
     </main>
     <footer class="site-footer">
-      <div class="container footer-inner">
-        <p class="footer-name">Juliana Roloff</p>
-        <p class="footer-role">Clinical Psychologist · CRP 07/46432</p>
-        <p class="footer-contact">
-          <a href="mailto:contato@julianaroloff.psc.br">contato@julianaroloff.psc.br</a>
-          <span class="dot">·</span>
-          <a href="http://lattes.cnpq.br/8611418610937092" target="_blank" rel="noopener">Lattes Academic CV</a>
-        </p>
-        <p class="footer-note">
-          In-person sessions in São Lourenço do Sul, Rio Grande do Sul, Brazil,
-          and online sessions throughout Brazil.
-        </p>
-        <p class="footer-note">
-          This website does not provide emergency services.
-        </p>
-        <p class="footer-note">
-          If you are in crisis in Brazil, call <strong>188</strong> (CVV,
-          Brazil’s suicide prevention hotline).
-        </p>
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <p class="footer-kicker">Clinical Psychologist · CRP 07/46432</p>
+          <p class="footer-name"><span>Juliana</span> <em>Roloff</em></p>
+          <p class="footer-lead">In-person sessions in São Lourenço do Sul, Rio Grande do Sul, Brazil, and online sessions throughout Brazil.</p>
+          <a href="https://wa.me/5553984060277" target="_blank" rel="noopener" class="btn btn-primary footer-cta">Book a session via WhatsApp</a>
+        </div>
+        <nav class="footer-nav" aria-label="Navigate">
+          <p class="footer-h">Navigate</p>
+          <ul><li><a href="#apresentacao">About Me</a></li><li><a href="#servicos">Services</a></li><li><a href="#fundamentos">My Approach</a></li><li><a href="#processos">The Process</a></li><li><a href="#contato">Contact</a></li><li><a href="#localizacao">Location</a></li><li><a href="#conteudo">Recommendations</a></li></ul>
+        </nav>
+        <div class="footer-col">
+          <p class="footer-h">Contact</p>
+          <p class="footer-contact"><a href="mailto:contato@julianaroloff.psc.br">contato@julianaroloff.psc.br</a> <span class="dot">·</span> <a href="http://lattes.cnpq.br/8611418610937092" rel="noopener" target="_blank">Lattes Academic CV</a></p>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p class="footer-safety">This website does not provide emergency services. If you are in crisis in Brazil, call <strong>188</strong> (CVV, Brazil’s suicide prevention hotline).</p>
         <p class="footer-copy">© 2026 Juliana Roloff. All rights reserved.</p>
       </div>
+      <span class="footer-mark" aria-hidden="true">Roloff</span>
     </footer>
     <a
       aria-label="Contact via WhatsApp"
