@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap');/* =========================================================
+/* =========================================================
    RESET & TOKENS
    ========================================================= */
 *,
@@ -34,7 +34,6 @@
 
   --serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --copperplate: "Cinzel", serif;
 
   --header-h: 76px;
   --container: 1100px;
@@ -217,23 +216,20 @@ em {
   align-items: center;
   gap: 12px;
 }
-.brand {  text-decoration: none;
+.brand {
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   gap: 2px;
   line-height: 1.2;
 }
-
 .brand-name {
-  font-family: var(--copperplate);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 1.1rem;
-  font-weight: 700; 
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
   color: var(--text);
   white-space: nowrap;
 }
-
 .brand-tag {
   font-size: 0.68rem;
   text-transform: uppercase;
@@ -2342,7 +2338,8 @@ button.chip[aria-pressed="true"] {
 /* Assinatura gigante, discreta, cortada na base */
 .footer-mark {
   display: block;
-  font-family: var(--copperplate);
+  font-family: var(--serif);
+  font-style: italic;
   font-weight: 500;
   font-size: clamp(6rem, 26vw, 21rem);
   line-height: 0.78;
@@ -2355,3 +2352,90 @@ button.chip[aria-pressed="true"] {
   user-select: none;
   pointer-events: none;
 }
+
+
+/* =========================================================
+   FONTE DO NOME — Copperplate Gothic, só onde aparece
+   "Juliana Roloff" (cabeçalho, hero, rodapé).
+   ========================================================= */
+@font-face {
+  font-family: "Copperplate Gothic";
+  src: url("/fonts/copperplate.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --name-font: "Copperplate Gothic", "Cinzel", "Optima", Georgia, serif;
+}
+/* nome sempre em branco puro */
+.brand-name,
+.hero--video h1.hero-title,
+.site-footer .footer-name {
+  font-family: var(--name-font);
+  font-style: normal;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.brand-name {
+  font-size: 1.02rem;
+  letter-spacing: 0.14em;
+  color: var(--text);
+}
+.hero--video h1.hero-title {
+  letter-spacing: 0.01em;
+  line-height: 0.98;
+  color: #ffffff;
+  font-size: clamp(3.1rem, 11.2vw, 8rem);
+}
+.hero--video .t-a > span,
+.hero--video .t-b > span {
+  font-family: var(--name-font);
+  font-style: normal;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+.hero--video .t-b > span {
+  padding-left: clamp(0px, 6vw, 110px);
+  margin-top: 0;
+}
+.site-footer .footer-name {
+  font-size: clamp(1.9rem, 4.4vw, 3rem);
+  letter-spacing: 0.04em;
+  color: #ffffff;
+}
+.site-footer .footer-name span,
+.site-footer .footer-name em {
+  font-family: var(--name-font);
+  font-style: normal;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.footer-mark {
+  font-family: var(--name-font);
+  font-style: normal;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: clamp(4.6rem, 20vw, 17rem);
+}
+
+/* O nome dela é sempre em caixa alta, também no copyright */
+.name-mark {
+  font-family: var(--name-font);
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* "Juliana" em minúsculas (versaletes da Copperplate) e "ROLOFF" sempre em caixa alta */
+.nm-a, .hero--video .t-a > span, .site-footer .footer-name span { text-transform: none !important; }
+.nm-b, .hero--video .t-b > span, .site-footer .footer-name em, .footer-mark { text-transform: uppercase !important; }
+/* peso intermediário: traço levemente reforçado sobre a variante mais fina */
+.brand-name, .hero--video h1.hero-title, .site-footer .footer-name, .footer-mark, .name-mark {
+  -webkit-text-stroke: 0.018em currentColor;
+}
+.footer-mark { -webkit-text-stroke: 0; }
