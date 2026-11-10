@@ -84,6 +84,7 @@
    =========================================================
    Para adicionar/editar, use o painel do Decap (/admin) ou
    edite o arquivo content/recomendacoes.json.
+   Agora com filtros por tipo (Todos / Vídeos / Textos ...).
    A animação usa requestAnimationFrame (impossível de travar).
    ========================================================= */
 (function () {
@@ -92,8 +93,26 @@
   const carousel = document.getElementById('carousel');
   if (!track || !viewport || !carousel) return;
 
+  const filtersEl = document.getElementById('rec-filters');
   const prevBtn = carousel.querySelector('.carousel-arrow--prev');
   const nextBtn = carousel.querySelector('.carousel-arrow--next');
+
+  const isEN = (document.documentElement.lang || 'pt').toLowerCase().startsWith('en');
+  const TXT = isEN
+    ? {
+        all: 'All',
+        plural: { 'Vídeo': 'Videos', 'Texto': 'Texts', 'Podcast': 'Podcasts', 'Artigo': 'Articles', 'Capítulo': 'Chapters', 'Livro': 'Books' },
+        single: { 'Vídeo': 'Video', 'Texto': 'Text', 'Podcast': 'Podcast', 'Artigo': 'Article', 'Capítulo': 'Chapter', 'Livro': 'Book' },
+        error: 'Could not load the recommendations right now.',
+        empty: 'No recommendations published yet.'
+      }
+    : {
+        all: 'Todos',
+        plural: { 'Vídeo': 'Vídeos', 'Texto': 'Textos', 'Podcast': 'Podcasts', 'Artigo': 'Artigos', 'Capítulo': 'Capítulos', 'Livro': 'Livros' },
+        single: {},
+        error: 'Não foi possível carregar as recomendações agora.',
+        empty: 'Nenhuma recomendação publicada ainda.'
+      };
 
   /* ---------- helpers ---------- */
   function escapeHtml(s) {
@@ -103,27 +122,29 @@
   }
   function escapeAttr(s) { return escapeHtml(s); }
 
+  const YT_RE = /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/|v\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+
   function autoImage(item) {
     if (item.imagem) return item.imagem;
     if (item.tipo === 'Vídeo') {
-      const m = (item.link || '').match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/|v\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+      const m = (item.link || '').match(YT_RE);
       if (m) return `https://img.youtube.com/vi/${m[1]}/maxresdefault.jpg`;
     }
     return '';
   }
 
   function cardHTML(item, isClone) {
-    const label = item.tipo || 'Conteúdo';
-    const img = autoImage(item);
+    const tipo  = item.tipo || 'Conteúdo';
+    const label = TXT.single[tipo] || tipo;
+    const img   = autoImage(item);
 
-    // Extrai o ID do YouTube (se for vídeo)
     const ytId = (item.tipo === 'Vídeo' && item.link)
-      ? (item.link.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/|v\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/) || [])[1]
+      ? (item.link.match(YT_RE) || [])[1]
       : null;
 
     let thumb;
-    if (img && ytId) {
-      // YouTube: tenta maxresdefault (HD). Se falhar, cai pra hqdefault (SD com barras).
+    if (img && ytId && !item.imagem) {
+      // YouTube: tenta maxresdefault (HD). Se falhar, cai pra hqdefault.
       const hd       = `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
       const fallback = `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
       thumb = `<img src="${hd}"
@@ -147,166 +168,201 @@
       </a>`;
   }
 
-  /* ---------- carrega o JSON e inicializa o carrossel ---------- */
+  /* ---------- estado ---------- */
+  const CLONES = 3;
+  let ALL = [];
+  let current = [];
+  let N = 0;
+  let looping = false;
+  let stepWidth = 0;
+  let pos = CLONES;
+  let currentOffset = 0;
+  let animating = false;
+  let animToken = 0;
+
+  /* ---------- construir trilho (modo loop) ---------- */
+  function build() {
+    const clonesStart = current.slice(-CLONES).map(c => cardHTML(c, true)).join('');
+    const reals       = current.map(c => cardHTML(c, false)).join('');
+    const clonesEnd   = current.slice(0, CLONES).map(c => cardHTML(c, true)).join('');
+    track.innerHTML = clonesStart + reals + clonesEnd;
+  }
+
+  function measure() {
+    const card = track.querySelector('.card');
+    if (!card) return;
+    const gap = parseFloat(getComputedStyle(track).gap) || 24;
+    stepWidth = card.getBoundingClientRect().width + gap;
+  }
+
+  function applyTransform() {
+    track.style.transform = `translate3d(${currentOffset}px, 0, 0)`;
+  }
+
+  /* ---------- montar uma lista (todos ou filtrada) ---------- */
+  function mount(list) {
+    current = list;
+    N = list.length;
+    animToken++;
+    animating = false;
+    looping = N > CLONES;
+
+    carousel.classList.toggle('is-static', !looping);
+    track.classList.toggle('is-static', !looping);
+
+    if (!looping) {
+      // Poucos itens: mostra todos em grade simples, sem loop.
+      track.innerHTML = list.map(c => cardHTML(c, false)).join('');
+      currentOffset = 0;
+      track.style.transform = 'none';
+      return;
+    }
+
+    build();
+    measure();
+    pos = CLONES;
+    currentOffset = -pos * stepWidth;
+    applyTransform();
+    void track.offsetWidth;
+  }
+
+  /* ---------- animação via requestAnimationFrame ---------- */
+  function animateTo(targetOffset, onDone) {
+    const myToken = ++animToken;
+    const start = currentOffset;
+    const delta = targetOffset - start;
+    const t0 = performance.now();
+    const duration = 420;
+
+    function frame(now) {
+      if (myToken !== animToken) return;
+      const t = Math.min(1, (now - t0) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      currentOffset = start + delta * eased;
+      applyTransform();
+      if (t < 1) {
+        requestAnimationFrame(frame);
+      } else {
+        currentOffset = targetOffset;
+        applyTransform();
+        if (onDone) onDone();
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------- navegação ---------- */
+  function stepBy(direction) {
+    if (!looping || animating) return;
+    animating = true;
+
+    const newPos = pos + direction;
+    const targetOffset = -newPos * stepWidth;
+
+    animateTo(targetOffset, () => {
+      pos = newPos;
+
+      // Loop: se saiu da zona real, "salta" para a posição equivalente
+      if (pos > CLONES + N - 1) {
+        pos -= N;
+        currentOffset = -pos * stepWidth;
+        applyTransform();
+        void track.offsetWidth;
+      } else if (pos < CLONES) {
+        pos += N;
+        currentOffset = -pos * stepWidth;
+        applyTransform();
+        void track.offsetWidth;
+      }
+
+      animating = false;
+    });
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => stepBy(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => stepBy(+1));
+
+  /* ---------- teclado ---------- */
+  carousel.setAttribute('tabindex', '0');
+  carousel.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); stepBy(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); stepBy(+1); }
+  });
+
+  /* ---------- swipe (toque) ---------- */
+  let touchStartX = 0, touchStartY = 0;
+  viewport.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  viewport.addEventListener('touchend', (e) => {
+    if (e.changedTouches.length !== 1) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      stepBy(dx < 0 ? +1 : -1);
+    }
+  }, { passive: true });
+
+  /* ---------- resize ---------- */
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { if (current.length) mount(current); }, 200);
+  });
+
+  /* ---------- filtros por tipo ---------- */
+  function renderFilters() {
+    if (!filtersEl) return;
+    const types = [];
+    ALL.forEach(i => { const t = i.tipo || 'Conteúdo'; if (!types.includes(t)) types.push(t); });
+    if (types.length < 2) { filtersEl.hidden = true; return; }
+
+    const chip = (key, label, count, pressed) =>
+      `<button type="button" class="chip" data-type="${escapeAttr(key)}" aria-pressed="${pressed}">
+         ${escapeHtml(label)} <span class="chip-count">${count}</span>
+       </button>`;
+
+    filtersEl.innerHTML =
+      chip('*', TXT.all, ALL.length, true) +
+      types.map(t => chip(t, TXT.plural[t] || t, ALL.filter(i => (i.tipo || 'Conteúdo') === t).length, false)).join('');
+    filtersEl.hidden = false;
+
+    filtersEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-type]');
+      if (!btn) return;
+      filtersEl.querySelectorAll('[data-type]').forEach(b =>
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false')
+      );
+      const t = btn.dataset.type;
+      mount(t === '*' ? ALL : ALL.filter(i => (i.tipo || 'Conteúdo') === t));
+    });
+  }
+
+  /* ---------- carrega o JSON ---------- */
   fetch('/content/recomendacoes.json')
     .then(r => {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
     })
     .then(data => {
-      const RECOMENDACOES = data.itens || [];
-      initCarrossel(RECOMENDACOES);
+      ALL = data.itens || [];
+      if (!ALL.length) {
+        track.innerHTML = `<p style="padding:40px;color:var(--muted)">${TXT.empty}</p>`;
+        return;
+      }
+      renderFilters();
+      mount(ALL);
+      // Reajusta medidas quando fontes/imagens terminarem de carregar.
+      window.addEventListener('load', () => { if (current.length) mount(current); });
     })
     .catch(err => {
       console.error('Erro ao carregar recomendações:', err);
-      track.innerHTML = '<p style="padding:40px;color:var(--muted)">Não foi possível carregar as recomendações agora.</p>';
+      track.innerHTML = `<p style="padding:40px;color:var(--muted)">${TXT.error}</p>`;
     });
-
-  function initCarrossel(RECOMENDACOES) {
-    if (!RECOMENDACOES.length) {
-      track.innerHTML = '<p style="padding:40px;color:var(--muted)">Nenhuma recomendação publicada ainda.</p>';
-      return;
-    }
-
-    /* ---------- estado ---------- */
-    const N = RECOMENDACOES.length;
-    const CLONES = 3;
-    let stepWidth = 0;
-    let pos = CLONES;
-    let currentOffset = 0;
-    let animating = false;
-
-    /* ---------- construir trilho ---------- */
-    function build() {
-      const clonesStart = RECOMENDACOES.slice(-CLONES).map(c => cardHTML(c, true)).join('');
-      const reals       = RECOMENDACOES.map(c => cardHTML(c, false)).join('');
-      const clonesEnd   = RECOMENDACOES.slice(0, CLONES).map(c => cardHTML(c, true)).join('');
-      track.innerHTML = clonesStart + reals + clonesEnd;
-    }
-
-    function measure() {
-      const card = track.querySelector('.card');
-      if (!card) return;
-      const gap = parseFloat(getComputedStyle(track).gap) || 24;
-      stepWidth = card.getBoundingClientRect().width + gap;
-    }
-
-    function applyTransform() {
-      track.style.transform = `translate3d(${currentOffset}px, 0, 0)`;
-    }
-
-    /* ---------- animação via requestAnimationFrame (nunca trava) ---------- */
-    let animToken = 0;
-    function animateTo(targetOffset, onDone) {
-      const myToken = ++animToken;
-      const start = currentOffset;
-      const delta = targetOffset - start;
-      const t0 = performance.now();
-      const duration = 420;
-
-      function frame(now) {
-        if (myToken !== animToken) return;
-        const t = Math.min(1, (now - t0) / duration);
-        const eased = 1 - Math.pow(1 - t, 3);
-        currentOffset = start + delta * eased;
-        applyTransform();
-        if (t < 1) {
-          requestAnimationFrame(frame);
-        } else {
-          currentOffset = targetOffset;
-          applyTransform();
-          if (onDone) onDone();
-        }
-      }
-      requestAnimationFrame(frame);
-    }
-
-    /* ---------- navegação ---------- */
-    function stepBy(direction) {
-      if (animating) return;
-      animating = true;
-
-      const newPos = pos + direction;
-      const targetOffset = -newPos * stepWidth;
-
-      animateTo(targetOffset, () => {
-        pos = newPos;
-
-        // Loop: se saiu da zona real, "salta" para a posição equivalente (sem animação)
-        if (pos > CLONES + N - 1) {
-          pos -= N;
-          currentOffset = -pos * stepWidth;
-          applyTransform();
-          void track.offsetWidth;
-        } else if (pos < CLONES) {
-          pos += N;
-          currentOffset = -pos * stepWidth;
-          applyTransform();
-          void track.offsetWidth;
-        }
-
-        animating = false;
-      });
-    }
-
-    /* ---------- setas ---------- */
-    if (prevBtn) prevBtn.addEventListener('click', () => stepBy(-1));
-    if (nextBtn) nextBtn.addEventListener('click', () => stepBy(+1));
-
-    /* ---------- teclado ---------- */
-    carousel.setAttribute('tabindex', '0');
-    carousel.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft')  { e.preventDefault(); stepBy(-1); }
-      if (e.key === 'ArrowRight') { e.preventDefault(); stepBy(+1); }
-    });
-
-    /* ---------- swipe (toque) ---------- */
-    let touchStartX = 0, touchStartY = 0;
-    viewport.addEventListener('touchstart', (e) => {
-      if (e.touches.length === 1) {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-      }
-    }, { passive: true });
-
-    viewport.addEventListener('touchend', (e) => {
-      if (e.changedTouches.length !== 1) return;
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      const dy = e.changedTouches[0].clientY - touchStartY;
-      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-        stepBy(dx < 0 ? +1 : -1);
-      }
-    }, { passive: true });
-
-    /* ---------- resize ---------- */
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        animToken++;
-        animating = false;
-        build();
-        measure();
-        pos = CLONES;
-        currentOffset = -pos * stepWidth;
-        applyTransform();
-        void track.offsetWidth;
-      }, 200);
-    });
-
-    /* ---------- init ---------- */
-    function init() {
-      build();
-      measure();
-      pos = CLONES;
-      currentOffset = -pos * stepWidth;
-      applyTransform();
-      void track.offsetWidth;
-    }
-
-    if (document.readyState === 'complete') init();
-    else window.addEventListener('load', init);
-  }
 })();
 
 /* =========================================================
@@ -475,5 +531,178 @@
         window.netlifyIdentity.open('recovery');
       }
     });
+  }
+})();
+/* =========================================================
+   VERSÃO DINÂMICA — animações e interações
+   ========================================================= */
+
+/* ---------- Revelar ao rolar + contadores ---------- */
+(function () {
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const items  = document.querySelectorAll('[data-reveal]');
+  const counters = document.querySelectorAll('[data-count]');
+
+  function animateCount(el) {
+    const target = parseInt(el.dataset.count, 10) || 0;
+    if (reduce || target <= 0) { el.textContent = target; return; }
+    const duration = 1100;
+    const t0 = performance.now();
+    el.textContent = '0';
+    (function frame(now) {
+      const t = Math.min(1, (now - t0) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(target * eased);
+      if (t < 1) requestAnimationFrame(frame);
+    })(t0);
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('in'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('in');
+      entry.target.querySelectorAll('[data-count]').forEach(animateCount);
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+  items.forEach((el, i) => {
+    // pequeno escalonamento entre irmãos
+    if (!el.style.getPropertyValue('--d')) {
+      const idx = Array.prototype.indexOf.call(el.parentElement.children, el);
+      el.style.setProperty('--d', Math.min(idx, 5) * 70 + 'ms');
+    }
+    io.observe(el);
+  });
+})();
+
+/* ---------- "Como atuo": cartões deslizantes ---------- */
+(function () {
+  const track = document.getElementById('story-track');
+  if (!track) return;
+
+  const cards  = Array.prototype.slice.call(track.children);
+  const dotsEl = document.getElementById('story-dots');
+  const prev   = document.getElementById('story-prev');
+  const next   = document.getElementById('story-next');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function step() {
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 16;
+    return cards[0].getBoundingClientRect().width + gap;
+  }
+
+  function go(i) {
+    i = Math.max(0, Math.min(cards.length - 1, i));
+    track.scrollTo({ left: i * step(), behavior: reduce ? 'auto' : 'smooth' });
+  }
+
+  const dots = cards.map((c, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'story-dot';
+    b.setAttribute('aria-label', (i + 1) + ' / ' + cards.length);
+    b.addEventListener('click', () => go(i));
+    dotsEl.appendChild(b);
+    return b;
+  });
+
+  function currentIndex() {
+    const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    if (atEnd) return cards.length - 1;
+    return Math.round(track.scrollLeft / step());
+  }
+
+  let ticking = false;
+  function update() {
+    ticking = false;
+    const i = currentIndex();
+    dots.forEach((d, j) => d.setAttribute('aria-current', j === i ? 'true' : 'false'));
+    prev.disabled = i <= 0;
+    next.disabled = i >= cards.length - 1;
+  }
+  track.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+
+  prev.addEventListener('click', () => go(currentIndex() - 1));
+  next.addEventListener('click', () => go(currentIndex() + 1));
+
+  track.addEventListener('keydown', (e) => {
+    if (e.target.closest('summary')) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(currentIndex() + 1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(currentIndex() - 1); }
+  });
+
+  update();
+})();
+
+/* ---------- "O processo": abas ---------- */
+(function () {
+  const list = document.querySelector('.steps');
+  if (!list) return;
+
+  const tabs   = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+  const panels = tabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
+
+  function select(i, focus) {
+    tabs.forEach((t, j) => {
+      const on = i === j;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      panels[j].hidden = !on;
+    });
+    if (focus) tabs[i].focus();
+  }
+
+  tabs.forEach((t, i) => t.addEventListener('click', () => select(i, false)));
+
+  list.addEventListener('keydown', (e) => {
+    const i = tabs.indexOf(document.activeElement);
+    if (i < 0) return;
+    let n = null;
+    if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+    if (e.key === 'ArrowLeft')  n = (i - 1 + tabs.length) % tabs.length;
+    if (e.key === 'Home') n = 0;
+    if (e.key === 'End')  n = tabs.length - 1;
+    if (n !== null) { e.preventDefault(); select(n, true); }
+  });
+
+  // Sem JS, todos os painéis ficam visíveis; com JS, só o primeiro.
+  select(0, false);
+})();
+
+/* ---------- Hero: vídeo de fundo ---------- */
+(function () {
+  const v = document.querySelector('.hero-video');
+  if (!v) return;
+
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = navigator.connection && navigator.connection.saveData;
+
+  // Quem prefere menos movimento (ou economiza dados) vê só a imagem de capa.
+  if (reduce || saveData) {
+    v.removeAttribute('autoplay');
+    v.pause();
+    return;
+  }
+
+  function play() {
+    const p = v.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+  play();
+
+  // Pausa o vídeo quando o hero sai da tela (economiza bateria).
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.isIntersecting ? play() : v.pause(); });
+    }, { threshold: 0.05 }).observe(v);
   }
 })();
