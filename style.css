@@ -2355,19 +2355,28 @@ button.chip[aria-pressed="true"] {
 
 
 /* =========================================================
-   FONTE DO NOME — Copperplate Gothic, só onde aparece
-   "Juliana Roloff" (cabeçalho, hero, rodapé).
+   FONTE DO NOME — Copperplate Gothic
    ========================================================= */
 @font-face {
   font-family: "Copperplate Gothic";
-  src: url("/fonts/copperplate.woff") format("woff");
+  src: url("/fonts/copperplate-regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Copperplate Gothic";
+  src: url("/fonts/copperplate-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --name-font: "Copperplate Gothic", "Cinzel", "Optima", Georgia, serif;
 }
+
 /* nome sempre em branco puro */
 .brand-name,
 .hero--video h1.hero-title,
@@ -2377,17 +2386,20 @@ button.chip[aria-pressed="true"] {
   font-weight: 400;
   text-transform: uppercase;
 }
+
 .brand-name {
   font-size: 1.02rem;
   letter-spacing: 0.14em;
   color: var(--text);
 }
+
 .hero--video h1.hero-title {
   letter-spacing: 0.01em;
   line-height: 0.98;
   color: #ffffff;
   font-size: clamp(3.1rem, 11.2vw, 8rem);
 }
+
 .hero--video .t-a > span,
 .hero--video .t-b > span {
   font-family: var(--name-font);
@@ -2396,15 +2408,18 @@ button.chip[aria-pressed="true"] {
   text-transform: uppercase;
   letter-spacing: 0.01em;
 }
+
 .hero--video .t-b > span {
   padding-left: clamp(0px, 6vw, 110px);
   margin-top: 0;
 }
+
 .site-footer .footer-name {
   font-size: clamp(1.9rem, 4.4vw, 3rem);
   letter-spacing: 0.04em;
   color: #ffffff;
 }
+
 .site-footer .footer-name span,
 .site-footer .footer-name em {
   font-family: var(--name-font);
@@ -2413,6 +2428,7 @@ button.chip[aria-pressed="true"] {
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
+
 .footer-mark {
   font-family: var(--name-font);
   font-style: normal;
@@ -2431,10 +2447,11 @@ button.chip[aria-pressed="true"] {
   letter-spacing: 0.08em;
 }
 
-/* "Juliana" em minúsculas (versaletes da Copperplate) e "ROLOFF" sempre em caixa alta */
+/* "Juliana" em caixa mista e "ROLOFF" em caixa alta */
 .nm-a, .hero--video .t-a > span, .site-footer .footer-name span { text-transform: none !important; }
 .nm-b, .hero--video .t-b > span, .site-footer .footer-name em, .footer-mark { text-transform: uppercase !important; }
-/* peso intermediário: traço levemente reforçado sobre a variante mais fina */
+
+/* peso intermediário: traço levemente reforçado */
 .brand-name, .hero--video h1.hero-title, .site-footer .footer-name, .footer-mark, .name-mark {
   -webkit-text-stroke: 0.018em currentColor;
 }
