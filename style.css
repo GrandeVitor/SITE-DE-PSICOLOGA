@@ -1030,6 +1030,23 @@ em {
   .brand-tag {
     display: none;
   }
+  
+
+  /* --- AJUSTES DO CABEÇALHO NO CELULAR --- */
+  .header-inner {
+    gap: 10px; 
+  }
+  .header-actions {
+    gap: 6px; 
+  }
+  .brand-name {
+    font-size: 0.85rem; 
+    letter-spacing: 0.08em; 
+  }
+  .theme-toggle, .menu-toggle {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 /* Acessibilidade — reduzir movimento */
